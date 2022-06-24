@@ -104,8 +104,9 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <connections>
+                        <outlet property="minValueLabel" destination="Cjx-ZN-245" id="cpF-rj-cmC"/>
                         <outlet property="slider" destination="7W3-ue-bnd" id="waL-vr-THZ"/>
-                        <outlet property="targetLabel" destination="Cjx-ZN-245" id="tmK-Gh-mOr"/>
+                        <outlet property="targetLabel" destination="LGT-LR-Ucc" id="PFG-Jv-1Gv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
