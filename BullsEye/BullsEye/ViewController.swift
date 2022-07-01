@@ -24,28 +24,43 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         startNewRound()
     }
-
+    
     @IBAction func showAlert() {
         
         let difference = abs(currentValue - targetValue)
-        let points = 100 - difference
-        
-        score += points
+        var points = 100 - difference
         
         let message = "You scored \(points) points"
-        + "\nThe value of the slider is: \(currentValue)" + "\nThe target value is: \(targetValue)" + "\nThe difference is: \(difference)"
-
-        let alert = UIAlertController(title: "Hello World",
+        
+        let title: String
+        
+        if difference == 0 {
+            title = "Perfect"
+            points += 100
+        } else if difference < 5 {
+            title = "You almost had it!"
+            if difference == 1 {
+                points += 50
+            }
+        } else if difference < 10 {
+            title = "Pretty good!"
+        } else {
+            title = "Not even close..."
+        }
+        score += points
+        
+        
+        let alert = UIAlertController(title: title,
                                       message: message,
                                       preferredStyle: .alert)
         
         let alertAction = UIAlertAction(title: "Ok",
-                                        style: .default)
+                                        style: .default) { _ in
+            self.startNewRound()
+        }
         
         alert.addAction(alertAction)
         present(alert, animated: true)
-        
-        startNewRound()
     }
     
     
@@ -55,14 +70,20 @@ class ViewController: UIViewController {
     }
     
     
+    @IBAction func startOver(_ sender: Any) {
+        score = 0
+        round = 0
+        startNewRound()
+    }
+    
+    
+    
     func startNewRound() {
         round += 1
         targetValue = Int.random(in: 1...100)
         currentValue = 50
         slider.value = Float(currentValue)
-        
-        
-        
+
         updateLabels()
     }
     
@@ -72,5 +93,12 @@ class ViewController: UIViewController {
         scoreLabel.text = String(score)
         roundLabel.text = String(round)
     }
+    
+    
+//    func startNewGame() {
+//        score = 0
+//        round = 0
+//        startNewRound()
+//    }
 }
 
