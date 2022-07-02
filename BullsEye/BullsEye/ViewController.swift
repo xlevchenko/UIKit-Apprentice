@@ -16,6 +16,7 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var slider: UISlider!
     @IBOutlet weak var minValueLabel: UILabel!
+    @IBOutlet weak var maxValueLabel: UILabel!
     @IBOutlet weak var targetLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var roundLabel: UILabel!
@@ -67,6 +68,7 @@ class ViewController: UIViewController {
     @IBAction func sliderMoved(_ sender: UISlider) {
         currentValue = lroundf(sender.value)
         minValueLabel.text = "\(lroundf(sender.value))"
+        maxValueLabel.text = "-\(lroundf(sender.maximumValue - sender.value))"
     }
     
     
@@ -81,7 +83,7 @@ class ViewController: UIViewController {
     func startNewRound() {
         round += 1
         targetValue = Int.random(in: 1...100)
-        currentValue = 50
+        currentValue = 1
         slider.value = Float(currentValue)
 
         updateLabels()
