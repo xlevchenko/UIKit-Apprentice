@@ -41,16 +41,20 @@
                                     <action selector="sliderMoved:" destination="BYZ-38-t0r" eventType="valueChanged" id="kmd-3G-UWD"/>
                                 </connections>
                             </slider>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dmv-IK-tlH">
-                                <rect key="frame" x="88" y="292" width="91" height="31"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Start Over"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dmv-IK-tlH">
+                                <rect key="frame" x="88" y="291" width="32" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="32" id="6qz-eE-4JS"/>
+                                    <constraint firstAttribute="height" constant="32" id="nMT-Fs-dy1"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="StartOverIcon" backgroundImage="SmallButton"/>
                                 <connections>
                                     <action selector="startOver:" destination="BYZ-38-t0r" eventType="touchUpInside" id="X1T-TX-QCb"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="47D-qK-SSK">
-                                <rect key="frame" x="234" y="302" width="51" height="21"/>
+                                <rect key="frame" x="175" y="302" width="51" height="21"/>
                                 <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="16"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -58,7 +62,7 @@
                                 <size key="shadowOffset" width="0.0" height="2"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eMa-df-kkM">
-                                <rect key="frame" x="293" y="297" width="12" height="26"/>
+                                <rect key="frame" x="234" y="297" width="12" height="26"/>
                                 <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="20"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -84,6 +88,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoDark" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gyc-gT-Unn">
                                 <rect key="frame" x="763" y="292" width="45" height="31"/>
                                 <buttonConfiguration key="configuration" style="plain"/>
+                                <connections>
+                                    <segue destination="9eB-eW-biC" kind="presentation" modalTransitionStyle="flipHorizontal" id="s4b-Aj-SIn"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LGT-LR-Ucc">
                                 <rect key="frame" x="567" y="54" width="36" height="26"/>
@@ -109,9 +116,12 @@
                                 <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="20"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <size key="titleShadowOffset" width="0.0" height="1"/>
-                                <state key="normal" title="Hit Me!" backgroundImage="Button-Normal">
+                                <state key="normal" title="Hit Me!" backgroundImage="Button-Highlighted">
                                     <color key="titleColor" red="0.37647058823529411" green="0.11764705882352941" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" red="0.37647058823529411" green="0.11764705882352941" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="showAlert" destination="BYZ-38-t0r" eventType="touchUpInside" id="3uQ-Fn-xne"/>
@@ -169,10 +179,70 @@
             </objects>
             <point key="canvasLocation" x="43.526785714285715" y="24.637681159420293"/>
         </scene>
+        <!--About View Controller-->
+        <scene sceneID="q5k-sO-sSf">
+            <objects>
+                <viewController id="9eB-eW-biC" customClass="AboutViewController" customModule="BullsEye" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="1LN-jN-huT">
+                        <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="nIh-YL-t37">
+                                <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fek-2y-bJz">
+                                <rect key="frame" x="384" y="336" width="128" height="37"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <size key="titleShadowOffset" width="0.0" height="1"/>
+                                <state key="normal" title="Close" backgroundImage="Button-Normal">
+                                    <color key="titleColor" red="0.37647058820000001" green="0.1176470588" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="close" destination="9eB-eW-biC" eventType="touchUpInside" id="eWk-e3-XSE"/>
+                                </connections>
+                            </button>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pod-hg-4oB">
+                                <rect key="frame" x="64" y="10" width="768" height="306"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="D6f-qp-u3A"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Pod-hg-4oB" firstAttribute="leading" secondItem="D6f-qp-u3A" secondAttribute="leading" constant="20" id="4ky-tU-w1r"/>
+                            <constraint firstAttribute="trailing" secondItem="nIh-YL-t37" secondAttribute="trailing" id="8gZ-my-ILx"/>
+                            <constraint firstItem="Pod-hg-4oB" firstAttribute="top" secondItem="D6f-qp-u3A" secondAttribute="top" constant="10" id="G2L-da-u3v"/>
+                            <constraint firstAttribute="bottom" secondItem="nIh-YL-t37" secondAttribute="bottom" id="K8V-hu-RaU"/>
+                            <constraint firstItem="D6f-qp-u3A" firstAttribute="trailing" secondItem="Pod-hg-4oB" secondAttribute="trailing" constant="20" id="KLI-mU-HKY"/>
+                            <constraint firstItem="fek-2y-bJz" firstAttribute="leading" secondItem="D6f-qp-u3A" secondAttribute="leading" constant="340" id="Smv-zy-6am"/>
+                            <constraint firstItem="D6f-qp-u3A" firstAttribute="bottom" secondItem="fek-2y-bJz" secondAttribute="bottom" constant="20" id="Ucu-Mb-IvP"/>
+                            <constraint firstItem="fek-2y-bJz" firstAttribute="top" secondItem="Pod-hg-4oB" secondAttribute="bottom" constant="20" id="V8b-8I-U4z"/>
+                            <constraint firstItem="D6f-qp-u3A" firstAttribute="trailing" secondItem="fek-2y-bJz" secondAttribute="trailing" constant="340" id="dxz-gN-QjC"/>
+                            <constraint firstItem="nIh-YL-t37" firstAttribute="leading" secondItem="1LN-jN-huT" secondAttribute="leading" id="khh-Up-hcE"/>
+                            <constraint firstItem="nIh-YL-t37" firstAttribute="top" secondItem="D6f-qp-u3A" secondAttribute="top" id="pnu-dZ-VFw"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="webView" destination="Pod-hg-4oB" id="qAM-S9-J2G"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="f5Y-wX-kbB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="686.38392857142856" y="24.637681159420293"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Background" width="568" height="320"/>
+        <image name="Button-Highlighted" width="100" height="37"/>
         <image name="Button-Normal" width="100" height="37"/>
+        <image name="SmallButton" width="32" height="32"/>
+        <image name="StartOverIcon" width="20" height="20"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
