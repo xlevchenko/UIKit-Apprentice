@@ -10,10 +10,11 @@ import UIKit
 class ChecklistViewController: UITableViewController {
     
     var items = [ChecklistItem]()
-
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.navigationBar.prefersLargeTitles = true
         
         let item1 = ChecklistItem()
         item1.text = "Walk the dog"
@@ -38,6 +39,7 @@ class ChecklistViewController: UITableViewController {
         item5.checked = true
         items.append(item5)
     }
+    
     
     // MARK: - Table View Data Source
     
@@ -79,6 +81,29 @@ class ChecklistViewController: UITableViewController {
         }
         
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        //1
+        items.remove(at: indexPath.row)
+        
+        //2
+        let indexPaths = [indexPath]
+        tableView.deleteRows(at: indexPaths, with: .automatic)
+    }
+    
+    
+    @IBAction func addItem() {
+        let newRowIndex = items.count
+        let item = ChecklistItem()
+        item.text = "I'm a new row"
+        item.checked = true
+        items.append(item)
+        
+        let indexPath = IndexPath(row: newRowIndex, section: 0)
+        let indexPaths = [indexPath]
+        tableView.insertRows(at: indexPaths, with: .automatic)
+        
     }
 }
 
