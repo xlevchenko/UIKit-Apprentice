@@ -10,13 +10,13 @@ import UIKit
 class ChecklistViewController: UITableViewController {
     
     var items = [ChecklistItem]()
-    
+    var checklist: Checklist!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Disable large titles for this view controller
         navigationItem.largeTitleDisplayMode = .never
-
+        title = checklist.name
         loadChecklistItems()
     }
     
