@@ -17,6 +17,7 @@
 		606994BF2870B26E00F64FFA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 606994BD2870B26E00F64FFA /* LaunchScreen.storyboard */; };
 		606994C72874891500F64FFA /* ChecklistItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606994C62874891500F64FFA /* ChecklistItem.swift */; };
 		60DEE66728873253006BCA39 /* Checklist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DEE66628873253006BCA39 /* Checklist.swift */; };
+		60DEE66928875201006BCA39 /* ListDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DEE66828875201006BCA39 /* ListDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		606994C02870B26E00F64FFA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		606994C62874891500F64FFA /* ChecklistItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistItem.swift; sourceTree = "<group>"; };
 		60DEE66628873253006BCA39 /* Checklist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checklist.swift; sourceTree = "<group>"; };
+		60DEE66828875201006BCA39 /* ListDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,6 +51,7 @@
 			isa = PBXGroup;
 			children = (
 				6053CE102885E80A00FE9FA5 /* AllListsViewController.swift */,
+				60DEE66828875201006BCA39 /* ListDetailViewController.swift */,
 				606994B62870B26C00F64FFA /* ChecklistViewController.swift */,
 				601F163D287743FA00E92E04 /* ItemDetailViewController.swift */,
 			);
@@ -189,6 +192,7 @@
 				606994B52870B26C00F64FFA /* SceneDelegate.swift in Sources */,
 				606994C72874891500F64FFA /* ChecklistItem.swift in Sources */,
 				60DEE66728873253006BCA39 /* Checklist.swift in Sources */,
+				60DEE66928875201006BCA39 /* ListDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
