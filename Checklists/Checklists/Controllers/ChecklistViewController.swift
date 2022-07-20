@@ -162,7 +162,7 @@ extension ChecklistViewController: ItemDetailViewControllerDelegate {
         if let index = items.firstIndex(of: item) {
             let indexPath = IndexPath(row: index, section: 0)
             if let cell = tableView.cellForRow(at: indexPath) {
-                configureText(for: cell, with: item)
+                configur    eText(for: cell, with: item)
             }
             navigationController?.popViewController(animated: true)
         }
