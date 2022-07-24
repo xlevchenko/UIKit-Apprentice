@@ -114,20 +114,20 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="detailDisclosureButton" indentationWidth="10" reuseIdentifier="ChecklistItem" id="mfm-6Z-lXg">
-                                <rect key="frame" x="0.0" y="44.5" width="414" height="49.5"/>
+                                <rect key="frame" x="0.0" y="44.5" width="414" height="49"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mfm-6Z-lXg" id="Ppg-7J-zkE">
-                                    <rect key="frame" x="0.0" y="0.0" width="357" height="49.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="357" height="49"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="1000" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="htZ-3o-HUi">
-                                            <rect key="frame" x="41" y="11" width="321" height="27.5"/>
+                                            <rect key="frame" x="41" y="11" width="321" height="27"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="1001" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="✔️" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5pL-WD-5oM">
-                                            <rect key="frame" x="12" y="11" width="21" height="27.5"/>
+                                            <rect key="frame" x="12" y="11" width="21" height="27"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="21" id="56q-2f-FL4"/>
                                             </constraints>
@@ -252,7 +252,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="SOY-3n-Mvb"/>
+        <segue reference="LXS-n0-rT8"/>
         <segue reference="ZLb-sA-8Zs"/>
     </inferredMetricsTieBreakers>
     <resources>
