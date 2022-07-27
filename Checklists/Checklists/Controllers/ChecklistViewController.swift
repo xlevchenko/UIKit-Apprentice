@@ -9,7 +9,6 @@ import UIKit
 
 class ChecklistViewController: UITableViewController {
     
-    //var items = [ChecklistItem]()
     var checklist: Checklist!
     
     override func viewDidLoad() {
@@ -21,7 +20,6 @@ class ChecklistViewController: UITableViewController {
     
     
     // MARK: - Table View Data Source
-    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return checklist.items.count
     }
@@ -38,7 +36,8 @@ class ChecklistViewController: UITableViewController {
     
     func configureText(for cell: UITableViewCell, with item: ChecklistItem) {
         let label = cell.viewWithTag(1000) as! UILabel
-        label.text = item.text
+//        label.text = item.text
+        label.text = "\(item.itemID): \(item.text)"
     }
     
     

@@ -14,14 +14,14 @@ class ChecklistItem: NSObject, Codable {
     var shouldRemind = false
     var itemID = -1
     
-    init(text: String, checked: Bool) {
-        self.text = text
-        self.checked = checked
-        super.init()
-    }
-    
     override init() {
         super.init()
         itemID = DataModel.nextChecklistItemID()
+    }
+    
+    func scheduleNotification() {
+        if shouldRemind && dueDate > Date() {
+            print("We should schedule a notification!")
+        }
     }
 }

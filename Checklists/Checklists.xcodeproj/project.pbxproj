@@ -64,8 +64,8 @@
 		6053CE132885E83800FE9FA5 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				606994C62874891500F64FFA /* ChecklistItem.swift */,
 				60DEE66628873253006BCA39 /* Checklist.swift */,
+				606994C62874891500F64FFA /* ChecklistItem.swift */,
 				60FD607A288B31300039D071 /* DataModel.swift */,
 			);
 			path = Models;
