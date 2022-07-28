@@ -94,4 +94,15 @@ class ItemDetailViewController: UITableViewController, UITextFieldDelegate {
       doneBarButton.isEnabled = false
       return true
     }
+    
+    @IBAction func shouldRemindToggled(_ sender: UISwitch) {
+        textField.resignFirstResponder()
+        
+        if sender.isOn {
+            let center = UNUserNotificationCenter.current()
+            center.requestAuthorization(options: [.alert, .sound]) { _, _ in
+                //do nothing
+            }
+        }
+    }
 }
