@@ -18,24 +18,56 @@ class CurrentLocationViewController: UIViewController {
     @IBOutlet weak var getButton: UIButton!
     
     let locationManager = CLLocationManager()
-
+    var location: CLLocation?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        updateLabels()
     }
 
     
     @IBAction func getLocation(_ sender: UIButton) {
         let authStatus = locationManager.authorizationStatus
+        
         if authStatus == .notDetermined {
             locationManager.requestWhenInUseAuthorization()
+            return
+        }
+        
+        if authStatus == .denied || authStatus == .restricted {
+            showLocationServicesDeniendAlert()
             return
         }
         
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
         locationManager.startUpdatingLocation()
+    }
+    
+    
+    func showLocationServicesDeniendAlert() {
+        let alert = UIAlertController(
+            title: "Location Services Disabled",
+            message: "Please enable location services for this app in Settings.",
+            preferredStyle: .alert)
+        
+        let okAction = UIAlertAction(title: "OK", style: .default)
+        alert.addAction(okAction)
+
+        present(alert, animated: true)
+    }
+    
+    func updateLabels() {
+        if let location = location {
+            latitudeLabel.text = "Latitude: \(String(format: "%.8f", location.coordinate.latitude))"
+            longitudeLabel.text = "Longitude: \(String(format: "%.8f", location.coordinate.longitude))"
+        } else {
+            latitudeLabel.text = "Latitude:"
+            longitudeLabel.text = "Longitude:"
+            addressLabel.text = ""
+            tagButton.isHidden = true
+            messageLabel.text = "Tap 'Get My Location' to Start"
+        }
     }
 }
 
@@ -49,6 +81,8 @@ extension CurrentLocationViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let newLocation = locations.last!
-        print("didUpdateLocations: \(newLocation)")
+        
+        location = newLocation
+        updateLabels()
     }
 }
