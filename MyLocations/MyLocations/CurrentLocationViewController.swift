@@ -34,6 +34,17 @@ class CurrentLocationViewController: UIViewController {
         updateLabels()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.isNavigationBarHidden = true
+    }
+    
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.isNavigationBarHidden = false
+    }
+    
     
     @IBAction func getLocation(_ sender: UIButton) {
         let authStatus = locationManager.authorizationStatus
@@ -89,12 +100,12 @@ class CurrentLocationViewController: UIViewController {
             } else {
                 addressLabel.text = "No Address Found"
             }
-            
+
         } else {
             latitudeLabel.text = "Latitude:"
             longitudeLabel.text = "Longitude:"
             addressLabel.text = ""
-            tagButton.isHidden = true
+            tagButton.isHidden = false
             
             let statusMessage: String
             if let error = lastLocationError as NSError? {
@@ -114,6 +125,7 @@ class CurrentLocationViewController: UIViewController {
             messageLabel.text = statusMessage
             configureGetButton()
         }
+        
     }
     
     func string(from placemark: CLPlacemark) -> String {
@@ -172,7 +184,7 @@ class CurrentLocationViewController: UIViewController {
             locationManager.stopUpdatingLocation()
             locationManager.delegate = nil
             updatingLocation = false
-            
+
             if let timer = timer {
                 timer.invalidate()
             }
