@@ -86,6 +86,7 @@ class CurrentLocationViewController: UIViewController {
         present(alert, animated: true)
     }
     
+    
     func updateLabels() {
         if let location = location {
             latitudeLabel.text = "Latitude: \(String(format: "%.8f", location.coordinate.latitude))"
@@ -127,6 +128,7 @@ class CurrentLocationViewController: UIViewController {
         }
         
     }
+    
     
     func string(from placemark: CLPlacemark) -> String {
         var line1 = ""
@@ -191,11 +193,21 @@ class CurrentLocationViewController: UIViewController {
         }
     }
     
+    
     func configureGetButton() {
         if updatingLocation {
             getButton.setTitle("Stop", for: .normal)
         } else {
             getButton.setTitle("Get My Location", for: .normal)
+        }
+    }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "TagLocation" {
+            let controller = segue.destination as! LocationDetailsViewController
+            controller.cordinate = location!.coordinate
+            controller.placemark = placemark
         }
     }
 }

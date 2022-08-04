@@ -56,7 +56,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Tag Location"/>
                                 <connections>
-                                    <segue destination="fNM-eW-7u8" kind="show" id="cXJ-vo-yi3"/>
+                                    <segue destination="fNM-eW-7u8" kind="show" identifier="TagLocation" id="cXJ-vo-yi3"/>
                                 </connections>
                             </button>
                         </subviews>
