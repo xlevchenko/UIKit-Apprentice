@@ -27,6 +27,7 @@ class LocationDetailsViewController: UITableViewController {
         return formatter
     }()
     
+    var categoryName = "No Category"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,6 +44,8 @@ class LocationDetailsViewController: UITableViewController {
         }
         
         dateLabel.text = format(date: Date())
+        
+        categoryLabel.text = categoryName
     }
     
     
@@ -80,7 +83,22 @@ class LocationDetailsViewController: UITableViewController {
       return text
     }
     
+    
     func format(date: Date) -> String {
         return dateFormatter.string(from: date)
+    }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "PickCategory" {
+           let controller = segue.destination as! CategoryPickerViewController
+            controller.selectedCategoryName = categoryName
+        }
+    }
+    
+    @IBAction func categoryPickerDidPickerCategory(_ segue: UIStoryboardSegue) {
+        let controller = segue.source as! CategoryPickerViewController
+        categoryName = controller.selectedCategoryName
+        categoryLabel.text = categoryName
     }
 }
