@@ -15,6 +15,7 @@
 		601A676B28952A9800920091 /* MyLocations.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 601A676928952A9800920091 /* MyLocations.xcdatamodeld */; };
 		601A676D28952A9800920091 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 601A676C28952A9800920091 /* Assets.xcassets */; };
 		601A677028952A9800920091 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 601A676E28952A9800920091 /* LaunchScreen.storyboard */; };
+		6076857C289D6B0A00C2121C /* HudView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6076857B289D6B0900C2121C /* HudView.swift */; };
 		60FDCED1289C66DD00AC935A /* CategoryPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FDCED0289C66DD00AC935A /* CategoryPickerViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +30,7 @@
 		601A676C28952A9800920091 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		601A676F28952A9800920091 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		601A677128952A9800920091 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6076857B289D6B0900C2121C /* HudView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HudView.swift; sourceTree = "<group>"; };
 		60FDCED0289C66DD00AC935A /* CategoryPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryPickerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -67,6 +69,7 @@
 				601A676428952A9800920091 /* CurrentLocationViewController.swift */,
 				600FA2AE289A890E00C805C6 /* LocationDetailsViewController.swift */,
 				60FDCED0289C66DD00AC935A /* CategoryPickerViewController.swift */,
+				6076857B289D6B0900C2121C /* HudView.swift */,
 				601A676628952A9800920091 /* Main.storyboard */,
 				601A676C28952A9800920091 /* Assets.xcassets */,
 				601A676E28952A9800920091 /* LaunchScreen.storyboard */,
@@ -152,6 +155,7 @@
 				601A676128952A9800920091 /* AppDelegate.swift in Sources */,
 				601A676B28952A9800920091 /* MyLocations.xcdatamodeld in Sources */,
 				601A676328952A9800920091 /* SceneDelegate.swift in Sources */,
+				6076857C289D6B0A00C2121C /* HudView.swift in Sources */,
 				600FA2AF289A890E00C805C6 /* LocationDetailsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

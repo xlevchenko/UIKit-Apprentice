@@ -206,7 +206,7 @@ class CurrentLocationViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "TagLocation" {
             let controller = segue.destination as! LocationDetailsViewController
-            controller.cordinate = location!.coordinate
+            controller.cordinate = location?.coordinate ?? CLLocationCoordinate2D(latitude: 0, longitude: 0)
             controller.placemark = placemark
         }
     }

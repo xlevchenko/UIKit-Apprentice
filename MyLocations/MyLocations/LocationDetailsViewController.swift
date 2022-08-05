@@ -46,6 +46,20 @@ class LocationDetailsViewController: UITableViewController {
         dateLabel.text = format(date: Date())
         
         categoryLabel.text = categoryName
+        
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
+        gestureRecognizer.cancelsTouchesInView = false
+        tableView.addGestureRecognizer(gestureRecognizer)
+    }
+    
+    
+    @objc func hideKeyboard(_ gestureRecognizer: UITapGestureRecognizer) {
+        let point = gestureRecognizer.location(in: tableView)
+        let indexPath = tableView.indexPathForRow(at: point)
+        
+        if indexPath == nil || !(indexPath!.section == 0 && indexPath!.row == 0) {
+            descriptionTextView.resignFirstResponder()
+        }
     }
     
     
@@ -55,7 +69,10 @@ class LocationDetailsViewController: UITableViewController {
     
     
     @IBAction func done(_ sender: Any) {
+        guard let mainView = navigationController?.parent?.view else { return }
         
+        let hubView = HudView.hub(inView: mainView, animated: true)
+        hubView.text = "Tagged"
     }
     
     
@@ -100,5 +117,22 @@ class LocationDetailsViewController: UITableViewController {
         let controller = segue.source as! CategoryPickerViewController
         categoryName = controller.selectedCategoryName
         categoryLabel.text = categoryName
+    }
+    
+    
+    //MARK: - Table View Controller
+    override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        if indexPath.section == 0 || indexPath.section == 1 {
+            return indexPath
+        } else {
+            return nil
+        }
+    }
+    
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 0 && indexPath.row == 0 {
+            descriptionTextView.becomeFirstResponder()
+        }
     }
 }

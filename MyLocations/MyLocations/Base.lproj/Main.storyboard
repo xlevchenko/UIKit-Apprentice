@@ -102,7 +102,7 @@
         <scene sceneID="GEE-Rk-f6I">
             <objects>
                 <tableViewController id="fNM-eW-7u8" customClass="LocationDetailsViewController" customModule="MyLocations" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" id="57w-0U-FB2">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" id="57w-0U-FB2">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -258,7 +258,7 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="RUD-2G-Knr" firstAttribute="leading" secondItem="Mwc-8O-ZLb" secondAttribute="leading" constant="20" id="8tY-25-Ejg"/>
-                                                <constraint firstItem="5VK-Bl-ddr" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="RUD-2G-Knr" secondAttribute="trailing" constant="8" id="EFS-3d-ClI"/>
+                                                <constraint firstItem="5VK-Bl-ddr" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="RUD-2G-Knr" secondAttribute="trailing" constant="60" id="Thg-l9-hXw"/>
                                                 <constraint firstItem="RUD-2G-Knr" firstAttribute="centerY" secondItem="Mwc-8O-ZLb" secondAttribute="centerY" id="d6y-W9-olC"/>
                                                 <constraint firstAttribute="trailing" secondItem="5VK-Bl-ddr" secondAttribute="trailing" constant="20" id="mDQ-4c-XuD"/>
                                                 <constraint firstItem="5VK-Bl-ddr" firstAttribute="centerY" secondItem="Mwc-8O-ZLb" secondAttribute="centerY" id="sP4-Lk-W1r"/>
