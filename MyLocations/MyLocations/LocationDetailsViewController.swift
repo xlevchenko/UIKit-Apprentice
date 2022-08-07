@@ -7,6 +7,7 @@
 
 import UIKit
 import CoreLocation
+import CoreData
 
 class LocationDetailsViewController: UITableViewController {
     
@@ -29,6 +30,9 @@ class LocationDetailsViewController: UITableViewController {
     
     var categoryName = "No Category"
     
+    var managedObjectContext: NSManagedObjectContext!
+    var date = Date()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         descriptionTextView.text = ""
@@ -43,7 +47,7 @@ class LocationDetailsViewController: UITableViewController {
             addressLabel.text = "No Address Found"
         }
         
-        dateLabel.text = format(date: Date())
+        dateLabel.text = format(date: date)
         
         categoryLabel.text = categoryName
         
@@ -73,6 +77,25 @@ class LocationDetailsViewController: UITableViewController {
         
         let hubView = HudView.hub(inView: mainView, animated: true)
         hubView.text = "Tagged"
+        
+        let location = Location(context: managedObjectContext)
+        location.locationDescription = descriptionTextView.text
+        location.category = categoryName
+        location.latitude = cordinate.latitude
+        location.longitude = cordinate.longitude
+        location.date = date
+        location.placemark = placemark
+        
+        do {
+            try managedObjectContext.save()
+            afterDelay(0.6) {
+                hubView.hide()
+                self.navigationController?.popViewController(animated: true)
+            }
+            
+        } catch {
+            fatalCoreDataError(error)
+        }
     }
     
     
