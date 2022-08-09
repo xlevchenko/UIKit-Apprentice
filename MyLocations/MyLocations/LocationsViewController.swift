@@ -9,15 +9,13 @@ import UIKit
 import CoreData
 import CoreLocation
 
-class LocationsViewController: UITableViewController {
+class LocationsViewController: UITableViewController, NSFetchedResultsControllerDelegate {
     
     var managedObjectContext: NSManagedObjectContext!
     
     var locations = [Location]()
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
+    
+    lazy var fetchedResultsController: NSFetchedResultsController<Location> = {
         let fetchRequest = NSFetchRequest<Location>()
         
         let entity = Location.entity()
@@ -25,9 +23,28 @@ class LocationsViewController: UITableViewController {
         
         let sortDescriptor = NSSortDescriptor(key: "date", ascending: true)
         fetchRequest.sortDescriptors = [sortDescriptor]
+        fetchRequest.fetchBatchSize = 20
         
+        let fatchedResultsController = NSFetchedResultsController(
+            fetchRequest: fetchRequest,
+            managedObjectContext: self.managedObjectContext,
+            sectionNameKeyPath: nil,
+            cacheName: "Locations")
+        
+        fetchedResultsController.delegate = self
+        return fetchedResultsController
+    }()
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        performFetch()
+    }
+    
+    
+    func performFetch() {
         do {
-            locations = try managedObjectContext.fetch(fetchRequest)
+            try fetchedResultsController.performFetch()
         } catch {
             fatalCoreDataError(error)
         }
@@ -44,9 +61,10 @@ class LocationsViewController: UITableViewController {
     
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return locations.count
+        let sectionInfo = fetchedResultsController.sections![section]
+        return sectionInfo.numberOfObjects
     }
-
+    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LocationCell", for: indexPath) as! LocationCell
@@ -67,5 +85,9 @@ class LocationsViewController: UITableViewController {
                 controller.locationToEdit = location
             }
         }
+    }
+    
+    deinit {
+        fetchedResultsController.delegate = nil
     }
 }
