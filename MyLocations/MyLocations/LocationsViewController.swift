@@ -25,10 +25,14 @@ class LocationsViewController: UITableViewController {
         fetchRequest.sortDescriptors = [sortDescriptor]
         fetchRequest.fetchBatchSize = 20
         
+        let sort1 = NSSortDescriptor(key: "category", ascending: true)
+        let sort2 = NSSortDescriptor(key: "date", ascending: true)
+        fetchRequest.sortDescriptors = [sort1, sort2]
+        
         let fatchedResultsController = NSFetchedResultsController(
             fetchRequest: fetchRequest,
             managedObjectContext: self.managedObjectContext,
-            sectionNameKeyPath: nil,
+            sectionNameKeyPath: "category",
             cacheName: "Locations")
         
         fatchedResultsController.delegate = self
@@ -38,6 +42,7 @@ class LocationsViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.rightBarButtonItem = editButtonItem
         performFetch()
     }
     
@@ -59,6 +64,17 @@ class LocationsViewController: UITableViewController {
     }
     
     
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return fatchedResultsController.sections!.count
+    }
+    
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        let sectionInfo = fatchedResultsController.sections![section]
+        return sectionInfo.name
+    }
+    
+    
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let sectionInfo = fatchedResultsController.sections![section]
@@ -75,6 +91,20 @@ class LocationsViewController: UITableViewController {
         return cell
     }
     
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let location = fatchedResultsController.object(at: indexPath)
+            managedObjectContext.delete(location)
+            do {
+                try managedObjectContext.save()
+            } catch {
+                fatalCoreDataError(error)
+            }
+        }
+    }
+    
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "EditLocation" {
             let controller = segue.destination as! LocationDetailsViewController
@@ -86,6 +116,7 @@ class LocationsViewController: UITableViewController {
             }
         }
     }
+    
     
     deinit {
         fatchedResultsController.delegate = nil
@@ -144,6 +175,7 @@ extension LocationsViewController: NSFetchedResultsControllerDelegate {
             print("*** NSFetchedResults unknown type")
         }
     }
+    
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         print("*** controllerDidChangeContent")
