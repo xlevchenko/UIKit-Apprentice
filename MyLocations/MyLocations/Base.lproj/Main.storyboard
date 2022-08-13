@@ -365,6 +365,47 @@
             </objects>
             <point key="canvasLocation" x="3491" y="94"/>
         </scene>
+        <!--Map-->
+        <scene sceneID="vaa-Mb-e6d">
+            <objects>
+                <viewController id="GEm-ma-I2Q" customClass="MapViewController" customModule="MyLocations" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="aUk-CO-w52">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JVv-je-AEZ">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                            </mapView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="eL2-vh-W5F"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="JVv-je-AEZ" firstAttribute="trailing" secondItem="eL2-vh-W5F" secondAttribute="trailing" id="ICF-9h-OhG"/>
+                            <constraint firstItem="JVv-je-AEZ" firstAttribute="top" secondItem="eL2-vh-W5F" secondAttribute="top" id="Zjr-31-jlR"/>
+                            <constraint firstItem="JVv-je-AEZ" firstAttribute="leading" secondItem="eL2-vh-W5F" secondAttribute="leading" id="hdb-f0-W6S"/>
+                            <constraint firstItem="JVv-je-AEZ" firstAttribute="bottom" secondItem="eL2-vh-W5F" secondAttribute="bottom" id="wzm-Pu-vqQ"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Map" id="amD-Z5-J1g">
+                        <barButtonItem key="leftBarButtonItem" title="Locations" id="YLQ-sz-p1X">
+                            <connections>
+                                <action selector="showLocations:" destination="GEm-ma-I2Q" id="4d1-6X-n0d"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="User" id="ySP-An-1Mc">
+                            <connections>
+                                <action selector="showUser:" destination="GEm-ma-I2Q" id="Xdi-rB-H4c"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="mapView" destination="JVv-je-AEZ" id="aGl-wT-EWU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VUK-pK-lqv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="945" y="790"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="0W6-al-fFy">
             <objects>
@@ -378,6 +419,7 @@
                     <connections>
                         <segue destination="VRc-5n-OPf" kind="relationship" relationship="viewControllers" id="b7m-5A-YhY"/>
                         <segue destination="xs4-Ib-Y7k" kind="relationship" relationship="viewControllers" id="vup-mk-CfF"/>
+                        <segue destination="J1k-Vy-Klv" kind="relationship" relationship="viewControllers" id="Cjv-FW-dW2"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VHb-aL-kvJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -458,7 +500,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1eU-rF-xZ1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1855" y="790"/>
+            <point key="canvasLocation" x="2763.768115942029" y="789.50892857142856"/>
         </scene>
         <!--Locations-->
         <scene sceneID="dbv-QC-BnM">
@@ -475,7 +517,26 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DCD-4K-Vq0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="945" y="790"/>
+            <point key="canvasLocation" x="1855.072463768116" y="789.50892857142856"/>
+        </scene>
+        <!--Map-->
+        <scene sceneID="Ydi-Jd-COd">
+            <objects>
+                <navigationController title="Map" automaticallyAdjustsScrollViewInsets="NO" id="J1k-Vy-Klv" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Map" id="wqH-qC-Q5h"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="QF5-Qa-xNU">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="GEm-ma-I2Q" kind="relationship" relationship="rootViewController" id="2KU-vD-UXg"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3mo-aZ-YQ2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="170" y="790"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
