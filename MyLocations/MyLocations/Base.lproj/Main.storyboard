@@ -321,7 +321,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jMC-FF-2jO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2660.8695652173915" y="93.75"/>
+            <point key="canvasLocation" x="2735" y="94"/>
         </scene>
         <!--Choose Category-->
         <scene sceneID="cTZ-zy-LhB">
@@ -363,7 +363,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3hl-wd-N4i" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="pUa-Iu-77h" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3491" y="94"/>
+            <point key="canvasLocation" x="3546" y="94"/>
         </scene>
         <!--Map-->
         <scene sceneID="vaa-Mb-e6d">
@@ -375,6 +375,9 @@
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JVv-je-AEZ">
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <connections>
+                                    <outlet property="delegate" destination="GEm-ma-I2Q" id="T1d-Hz-p9M"/>
+                                </connections>
                             </mapView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="eL2-vh-W5F"/>
@@ -400,11 +403,12 @@
                     </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="JVv-je-AEZ" id="aGl-wT-EWU"/>
+                        <segue destination="fNM-eW-7u8" kind="show" identifier="EditLocation" id="FFE-iK-JoH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VUK-pK-lqv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="945" y="790"/>
+            <point key="canvasLocation" x="1732" y="1458"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="0W6-al-fFy">
@@ -500,7 +504,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1eU-rF-xZ1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2763.768115942029" y="789.50892857142856"/>
+            <point key="canvasLocation" x="1732" y="769"/>
         </scene>
         <!--Locations-->
         <scene sceneID="dbv-QC-BnM">
@@ -517,7 +521,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DCD-4K-Vq0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1855.072463768116" y="789.50892857142856"/>
+            <point key="canvasLocation" x="945" y="769"/>
         </scene>
         <!--Map-->
         <scene sceneID="Ydi-Jd-COd">
@@ -536,11 +540,11 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3mo-aZ-YQ2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="170" y="790"/>
+            <point key="canvasLocation" x="945" y="1458"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="OM5-me-PEd"/>
+        <segue reference="FFE-iK-JoH"/>
     </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="labelColor">

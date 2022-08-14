@@ -13,7 +13,19 @@ class MapViewController: UIViewController {
 
     @IBOutlet weak var mapView: MKMapView!
     
-    var managedObjectContext: NSManagedObjectContext!
+    var managedObjectContext: NSManagedObjectContext! {
+        didSet {
+            NotificationCenter.default.addObserver(
+                forName: Notification.Name.MKAnnotationCalloutInfoDidChange,
+                object: managedObjectContext,
+                queue: OperationQueue.main) { _ in
+                    if self.isViewLoaded {
+                        self.updateLocations()
+                    }
+                }
+        }
+    }
+    
     
     var locations = [Location]()
     
@@ -117,7 +129,7 @@ extension MapViewController: MKMapViewDelegate {
             pinView.pinTintColor = UIColor(red: 0.32, green: 0.82, blue: 0.4, alpha: 1)
             
             let rigthButton = UIButton(type: .detailDisclosure)
-            rigthButton.addTarget(self, action: #selector(), for: .touchUpInside)
+            rigthButton.addTarget(self, action: #selector(showLocationDetails), for: .touchUpInside)
             pinView.rightCalloutAccessoryView = rigthButton
             
             annotationView = pinView
@@ -132,5 +144,20 @@ extension MapViewController: MKMapViewDelegate {
             }
         }
         return annotationView
+    }
+    
+    @objc func showLocationDetails(_ sender: UIButton) {
+        performSegue(withIdentifier: "EditLocation", sender: sender)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "EditLocation" {
+            let controller = segue.destination as! LocationDetailsViewController
+            controller.managedObjectContext = managedObjectContext
+            
+            let button = sender as! UIButton
+            let location = locations[button.tag]
+            controller.locationToEdit = location
+        }
     }
 }
