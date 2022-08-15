@@ -18,6 +18,10 @@ class LocationDetailsViewController: UITableViewController {
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var addPhotoLabel: UILabel!
+    var image: UIImage?
+    
     var cordinate = CLLocationCoordinate2D(latitude: 0, longitude: 0)
     var placemark: CLPlacemark?
     
@@ -186,8 +190,15 @@ class LocationDetailsViewController: UITableViewController {
         if indexPath.section == 0 && indexPath.row == 0 {
             descriptionTextView.becomeFirstResponder()
         } else if indexPath.section == 1 && indexPath.row == 0 {
-            choosePhotoFromLibrary()
+            tableView.deselectRow(at: indexPath, animated: true)
+            pickPhoto()
         }
+    }
+    
+    func show(image: UIImage) {
+        imageView.image = image
+        imageView.isHidden = false
+        addPhotoLabel.text = ""
     }
 }
 
@@ -214,10 +225,48 @@ extension LocationDetailsViewController: UIImagePickerControllerDelegate, UINavi
     
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage
+        if let theImage = image {
+            show(image: theImage)
+        }
+        
         dismiss(animated: true)
     }
     
+    
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true)
+    }
+    
+    
+    func pickPhoto() {
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            showPhotoMenu()
+        } else {
+            choosePhotoFromLibrary()
+        }
+    }
+    
+    
+    func showPhotoMenu() {
+        let alert = UIAlertController(
+            title: nil,
+            message: nil,
+            preferredStyle: .actionSheet)
+        
+        let actCancel = UIAlertAction(title: "Cancel", style: .cancel)
+        alert.addAction(actCancel)
+        
+        let actPhoto = UIAlertAction(title: "Take Photo", style: .default) { _ in
+            self.takePhotoWithCamera()
+        }
+        alert.addAction(actPhoto)
+        
+        let actLibrary = UIAlertAction(title: "Chose From Library", style: .default) { _ in
+            self.choosePhotoFromLibrary()
+        }
+        alert.addAction(actLibrary)
+        
+        present(alert, animated: true)
     }
 }
