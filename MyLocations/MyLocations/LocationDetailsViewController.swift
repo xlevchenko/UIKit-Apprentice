@@ -20,6 +20,7 @@ class LocationDetailsViewController: UITableViewController {
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var addPhotoLabel: UILabel!
+    @IBOutlet var imageHeight: NSLayoutConstraint!
     var image: UIImage?
     
     var cordinate = CLLocationCoordinate2D(latitude: 0, longitude: 0)
@@ -78,6 +79,8 @@ class LocationDetailsViewController: UITableViewController {
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
         gestureRecognizer.cancelsTouchesInView = false
         tableView.addGestureRecognizer(gestureRecognizer)
+        
+        listenForBackgroundNotification()
     }
     
     
@@ -92,7 +95,7 @@ class LocationDetailsViewController: UITableViewController {
     
     
     @IBAction func cancel(_ sender: Any) {
-        
+        navigationController?.popViewController(animated: true)
     }
     
     
@@ -199,6 +202,21 @@ class LocationDetailsViewController: UITableViewController {
         imageView.image = image
         imageView.isHidden = false
         addPhotoLabel.text = ""
+        imageHeight.constant = 260
+        tableView.reloadData()
+    }
+    
+    
+    func listenForBackgroundNotification() {
+        NotificationCenter.default.addObserver(
+            forName: UIScene.didEnterBackgroundNotification,
+            object: nil,
+            queue: OperationQueue.main) { _ in
+                if self.presentedViewController != nil {
+                    self.dismiss(animated: false)
+                }
+                self.descriptionTextView.resignFirstResponder()
+            }
     }
 }
 

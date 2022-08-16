@@ -321,10 +321,12 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="addPhotoLabel" destination="ciM-Oz-kO7" id="8yg-j8-tc2"/>
                         <outlet property="addressLabel" destination="5VK-Bl-ddr" id="Zsz-Th-Brb"/>
                         <outlet property="categoryLabel" destination="HGB-8U-5Jg" id="X1Y-S1-Sux"/>
                         <outlet property="dateLabel" destination="SxK-6j-AoU" id="mAx-er-kcc"/>
                         <outlet property="descriptionTextView" destination="zcx-4N-RPq" id="wWd-x2-gOd"/>
+                        <outlet property="imageHeight" destination="bJR-6T-X2Q" id="iVu-Ic-eqe"/>
                         <outlet property="imageView" destination="HEq-L7-sO0" id="UhM-dL-5MV"/>
                         <outlet property="latitudeLabel" destination="eJs-8Z-Ocg" id="h2f-UR-stx"/>
                         <outlet property="longitudeLabel" destination="nfT-Uc-v25" id="lTj-MP-K6R"/>
