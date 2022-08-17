@@ -54,6 +54,8 @@ class LocationDetailsViewController: UITableViewController {
     
     var descriptionText = ""
     
+    var observer: Any!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         if let location = locationToEdit {
@@ -208,7 +210,7 @@ class LocationDetailsViewController: UITableViewController {
     
     
     func listenForBackgroundNotification() {
-        NotificationCenter.default.addObserver(
+        observer = NotificationCenter.default.addObserver(
             forName: UIScene.didEnterBackgroundNotification,
             object: nil,
             queue: OperationQueue.main) { _ in
@@ -217,6 +219,12 @@ class LocationDetailsViewController: UITableViewController {
                 }
                 self.descriptionTextView.resignFirstResponder()
             }
+    }
+    
+    
+    deinit {
+        print("*** deinit \(self)")
+        NotificationCenter.default.removeObserver(observer!)
     }
 }
 
