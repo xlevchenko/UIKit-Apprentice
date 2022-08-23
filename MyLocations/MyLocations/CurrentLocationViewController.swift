@@ -189,7 +189,8 @@ class CurrentLocationViewController: UIViewController {
             locationManager.stopUpdatingLocation()
             locationManager.delegate = nil
             updatingLocation = false
-
+            configureGetButton()
+            
             if let timer = timer {
                 timer.invalidate()
             }

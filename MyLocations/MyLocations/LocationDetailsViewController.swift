@@ -60,6 +60,12 @@ class LocationDetailsViewController: UITableViewController {
         super.viewDidLoad()
         if let location = locationToEdit {
             title = "Edit Location"
+            
+            if location.hasPhoto {
+                if let theImage = location.photoImage {
+                    show(image: theImage)
+                }
+            }
         }
         
         descriptionTextView.text = descriptionText
@@ -115,6 +121,7 @@ class LocationDetailsViewController: UITableViewController {
         } else {
             hubView.text = "Tagged"
             location = Location(context: managedObjectContext)
+            location.photoID = nil
         }
         
         location.locationDescription = descriptionTextView.text
@@ -123,6 +130,21 @@ class LocationDetailsViewController: UITableViewController {
         location.longitude = cordinate.longitude
         location.date = date
         location.placemark = placemark
+        
+        if let image = image {
+            
+            if !location.hasPhoto {
+                location.photoID = Location.nextPhotoID() as NSNumber
+            }
+            
+            if let date = image.jpegData(compressionQuality: 0.5) {
+                do {
+                    try date.write(to: location.photoURL, options: .atomic)
+                } catch {
+                    print("Error writing file: \(error )")
+                }
+            }
+        }
         
         do {
             try managedObjectContext.save()
@@ -213,12 +235,16 @@ class LocationDetailsViewController: UITableViewController {
         observer = NotificationCenter.default.addObserver(
             forName: UIScene.didEnterBackgroundNotification,
             object: nil,
-            queue: OperationQueue.main) { _ in
-                if self.presentedViewController != nil {
-                    self.dismiss(animated: false)
+            queue: OperationQueue.main) { [weak self] _ in
+                
+                if let weakSelf = self {
+                    if weakSelf.presentedViewController != nil {
+                        weakSelf.dismiss(animated: false)
+                    }
+                    weakSelf.descriptionTextView.resignFirstResponder()
                 }
-                self.descriptionTextView.resignFirstResponder()
             }
+                
     }
     
     
