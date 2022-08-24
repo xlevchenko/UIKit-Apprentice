@@ -11,6 +11,7 @@ import CoreLocation
 
 class LocationsViewController: UITableViewController {
     
+    
     var managedObjectContext: NSManagedObjectContext!
     
     var locations = [Location]()
@@ -97,7 +98,7 @@ class LocationsViewController: UITableViewController {
             let location = fatchedResultsController.object(at: indexPath)
             location.removePhotoFile()
             managedObjectContext.delete(location)
-        
+            
             do {
                 try managedObjectContext.save()
             } catch {

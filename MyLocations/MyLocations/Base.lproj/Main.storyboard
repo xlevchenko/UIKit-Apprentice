@@ -479,31 +479,41 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="100" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7LD-Dl-wZS">
-                                            <rect key="frame" x="20" y="10" width="374" height="21"/>
+                                            <rect key="frame" x="76" y="10" width="318" height="21"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" tag="101" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SoM-Au-SmV">
-                                            <rect key="frame" x="20" y="37" width="374" height="17"/>
+                                            <rect key="frame" x="76" y="37" width="318" height="17"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="p0v-cn-Gbw">
+                                            <rect key="frame" x="16" y="6" width="52" height="52"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="52" id="Cu0-PI-1BN"/>
+                                                <constraint firstAttribute="height" constant="52" id="hVA-A4-WwY"/>
+                                            </constraints>
+                                        </imageView>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="p0v-cn-Gbw" firstAttribute="top" secondItem="ESL-Lk-xFl" secondAttribute="top" constant="6" id="5In-6s-nIf"/>
                                         <constraint firstItem="SoM-Au-SmV" firstAttribute="top" secondItem="7LD-Dl-wZS" secondAttribute="bottom" constant="6" id="B6f-aa-trG"/>
                                         <constraint firstAttribute="trailing" secondItem="7LD-Dl-wZS" secondAttribute="trailing" constant="20" id="FNb-Kf-Fs8"/>
+                                        <constraint firstItem="p0v-cn-Gbw" firstAttribute="leading" secondItem="ESL-Lk-xFl" secondAttribute="leading" constant="16" id="WOs-mR-JSZ"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="SoM-Au-SmV" secondAttribute="trailing" id="Y1c-FE-3XH"/>
-                                        <constraint firstItem="SoM-Au-SmV" firstAttribute="leading" secondItem="ESL-Lk-xFl" secondAttribute="leadingMargin" id="cDM-9T-qLl"/>
-                                        <constraint firstItem="7LD-Dl-wZS" firstAttribute="leading" secondItem="ESL-Lk-xFl" secondAttribute="leading" constant="20" id="fk9-4a-5cj"/>
+                                        <constraint firstItem="SoM-Au-SmV" firstAttribute="leading" secondItem="p0v-cn-Gbw" secondAttribute="trailing" constant="8" id="bMW-dT-fPf"/>
                                         <constraint firstItem="SoM-Au-SmV" firstAttribute="bottom" secondItem="ESL-Lk-xFl" secondAttribute="bottomMargin" id="hzp-AQ-dl3"/>
                                         <constraint firstItem="7LD-Dl-wZS" firstAttribute="top" secondItem="ESL-Lk-xFl" secondAttribute="top" constant="10" id="kCK-vk-Gd0"/>
+                                        <constraint firstItem="7LD-Dl-wZS" firstAttribute="leading" secondItem="p0v-cn-Gbw" secondAttribute="trailing" constant="8" id="nJT-S6-FIp"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="addressLabel" destination="SoM-Au-SmV" id="kD1-V0-fuv"/>
                                     <outlet property="descriptionLabel" destination="7LD-Dl-wZS" id="Bkd-Uf-eyW"/>
+                                    <outlet property="photoImageView" destination="p0v-cn-Gbw" id="CcV-Qr-pMX"/>
                                     <segue destination="fNM-eW-7u8" kind="show" identifier="EditLocation" id="OM5-me-PEd"/>
                                 </connections>
                             </tableViewCell>
@@ -517,7 +527,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1eU-rF-xZ1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1732" y="769"/>
+            <point key="canvasLocation" x="1731.8840579710147" y="768.75"/>
         </scene>
         <!--Locations-->
         <scene sceneID="dbv-QC-BnM">
@@ -557,7 +567,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="FFE-iK-JoH"/>
+        <segue reference="OM5-me-PEd"/>
     </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="labelColor">
