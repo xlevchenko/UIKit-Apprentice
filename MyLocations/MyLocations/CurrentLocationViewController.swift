@@ -9,8 +9,9 @@ import UIKit
 import CoreLocation
 import CoreData
 
-class CurrentLocationViewController: UIViewController {
+class CurrentLocationViewController: UIViewController, CAAnimationDelegate {
     
+    @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var latitudeLabel: UILabel!
     @IBOutlet weak var longitudeLabel: UILabel!
@@ -31,6 +32,19 @@ class CurrentLocationViewController: UIViewController {
     var timer: Timer?
     
     var managedObjectContext: NSManagedObjectContext!
+    
+    var logoVisible = false
+    
+    lazy var logoButton: UIButton = {
+        let button = UIButton(type: .custom)
+        button.setBackgroundImage(UIImage(named: "Logo"), for: .normal)
+        button.sizeToFit()
+        button.addTarget(self, action: #selector(getLocation(_:)), for: .touchUpInside)
+        button.center.x = self.view.bounds.midX
+        button.center.y = 220
+        
+        return button
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,8 +76,14 @@ class CurrentLocationViewController: UIViewController {
             return
         }
         
+        if logoVisible {
+            hideLogoView()
+        }
+        
         placemark = nil
         lastGeocodingError = nil
+        
+        
         
         if updatingLocation {
             stopLocationManager()
@@ -104,12 +124,16 @@ class CurrentLocationViewController: UIViewController {
             } else {
                 addressLabel.text = "No Address Found"
             }
-
+            
+            tagButton.isHidden = false
+            latitudeLabel.isHidden = false
+            longitudeLabel.isHidden = false
+            
         } else {
             latitudeLabel.text = "Latitude:"
             longitudeLabel.text = "Longitude:"
             addressLabel.text = ""
-            tagButton.isHidden = false
+            
             
             let statusMessage: String
             if let error = lastLocationError as NSError? {
@@ -123,11 +147,16 @@ class CurrentLocationViewController: UIViewController {
             } else if updatingLocation {
                 statusMessage = "Searching..."
             } else {
-                statusMessage = "Tap 'Get My Location' to Start"
+                statusMessage = ""
+                showLogoView()
             }
             
             messageLabel.text = statusMessage
             configureGetButton()
+            
+            tagButton.isHidden = true
+            latitudeLabel.isHidden = true
+            longitudeLabel.isHidden = true
         }
         
     }
@@ -135,29 +164,17 @@ class CurrentLocationViewController: UIViewController {
     
     func string(from placemark: CLPlacemark) -> String {
         var line1 = ""
-        
-        if let tmp = placemark.subThoroughfare {
-            line1 += tmp + " "
-        }
-        
-        if let tmp = placemark.thoroughfare {
-            line1 += tmp
-        }
+        line1.add(text: placemark.subThoroughfare)
+        line1.add(text: placemark.thoroughfare, separatedBy: " ")
         
         var line2 = ""
-        if let tmp = placemark.locality {
-            line2 += tmp + " "
-        }
+        line2.add(text: placemark.locality)
+        line2.add(text: placemark.administrativeArea, separatedBy: " ")
+        line2.add(text: placemark.postalCode, separatedBy: " ")
         
-        if let tmp = placemark.administrativeArea {
-            line2 += tmp + " "
-        }
+        line1.add(text: line2, separatedBy: "\n")
         
-        if let tmp = placemark.postalCode {
-            line2 += tmp
-        }
-        
-        return line1 + "\n" + line2
+        return line1
     }
     
     
@@ -206,6 +223,21 @@ class CurrentLocationViewController: UIViewController {
         }
     }
     
+    
+    func showLogoView() {
+        if !logoVisible {
+            logoVisible = true
+            containerView.isHidden = true
+            view.addSubview(logoButton)
+        }
+    }
+    
+    
+    func hideLogoView() {
+        logoVisible = false
+        containerView.isHidden = false
+        logoButton.removeFromSuperview()
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "TagLocation" {
