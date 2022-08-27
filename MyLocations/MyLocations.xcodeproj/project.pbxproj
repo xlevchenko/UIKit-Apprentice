@@ -23,6 +23,7 @@
 		606CB6DF289FBC2F0089AA05 /* Location+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606CB6DD289FBC2F0089AA05 /* Location+CoreDataClass.swift */; };
 		606CB6E0289FBC2F0089AA05 /* Location+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606CB6DE289FBC2F0089AA05 /* Location+CoreDataProperties.swift */; };
 		6076857C289D6B0A00C2121C /* HudView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6076857B289D6B0900C2121C /* HudView.swift */; };
+		60CE985E28BAC46300D04291 /* Sound.caf in Resources */ = {isa = PBXBuildFile; fileRef = 60CE985D28BAC46300D04291 /* Sound.caf */; };
 		60E4436C28B809E800C36A07 /* String + AddText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60E4436B28B809E800C36A07 /* String + AddText.swift */; };
 		60FDCED1289C66DD00AC935A /* CategoryPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FDCED0289C66DD00AC935A /* CategoryPickerViewController.swift */; };
 /* End PBXBuildFile section */
@@ -46,6 +47,7 @@
 		606CB6DD289FBC2F0089AA05 /* Location+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Location+CoreDataClass.swift"; sourceTree = "<group>"; };
 		606CB6DE289FBC2F0089AA05 /* Location+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Location+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		6076857B289D6B0900C2121C /* HudView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HudView.swift; sourceTree = "<group>"; };
+		60CE985D28BAC46300D04291 /* Sound.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Sound.caf; sourceTree = "<group>"; };
 		60E4436B28B809E800C36A07 /* String + AddText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String + AddText.swift"; sourceTree = "<group>"; };
 		60FDCED0289C66DD00AC935A /* CategoryPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryPickerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -95,12 +97,21 @@
 				601A676628952A9800920091 /* Main.storyboard */,
 				601A676C28952A9800920091 /* Assets.xcassets */,
 				601A676E28952A9800920091 /* LaunchScreen.storyboard */,
+				60CE985C28BAC46300D04291 /* Sound */,
 				601A677128952A9800920091 /* Info.plist */,
 				601A676928952A9800920091 /* MyLocations.xcdatamodeld */,
 				606CB6DD289FBC2F0089AA05 /* Location+CoreDataClass.swift */,
 				606CB6DE289FBC2F0089AA05 /* Location+CoreDataProperties.swift */,
 			);
 			path = MyLocations;
+			sourceTree = "<group>";
+		};
+		60CE985C28BAC46300D04291 /* Sound */ = {
+			isa = PBXGroup;
+			children = (
+				60CE985D28BAC46300D04291 /* Sound.caf */,
+			);
+			path = Sound;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -163,6 +174,7 @@
 			files = (
 				601A677028952A9800920091 /* LaunchScreen.storyboard in Resources */,
 				601A676D28952A9800920091 /* Assets.xcassets in Resources */,
+				60CE985E28BAC46300D04291 /* Sound.caf in Resources */,
 				601A676828952A9800920091 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
