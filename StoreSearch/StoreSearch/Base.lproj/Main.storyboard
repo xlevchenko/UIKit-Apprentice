@@ -16,8 +16,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="TBU-bX-Sl1">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="interactive" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="TBU-bX-Sl1">
+                                <rect key="frame" x="0.0" y="51" width="375" height="616"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="rhU-2q-7Wg"/>
@@ -39,7 +39,7 @@
                             <constraint firstItem="TBU-bX-Sl1" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="PJA-ne-j4K"/>
                             <constraint firstItem="TBU-bX-Sl1" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="eO0-NB-8ZL"/>
                             <constraint firstItem="6mU-ef-d6I" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="iCv-yb-WeO"/>
-                            <constraint firstItem="TBU-bX-Sl1" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="pEZ-nS-4Iv"/>
+                            <constraint firstItem="TBU-bX-Sl1" firstAttribute="top" secondItem="6mU-ef-d6I" secondAttribute="bottom" id="pEZ-nS-4Iv"/>
                             <constraint firstItem="6mU-ef-d6I" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="q8N-NG-CFK"/>
                             <constraint firstItem="TBU-bX-Sl1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="yh2-kA-6wZ"/>
                         </constraints>
