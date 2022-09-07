@@ -35,6 +35,41 @@ class SearchViewController: UIViewController {
         
         return url!
     }
+    
+    
+    func performStoreRequst(with url: URL) -> Data? {
+        do {
+            return try Data(contentsOf: url)
+        } catch {
+            print("Download Error: \(error.localizedDescription)")
+            showNetworkError()
+            return nil
+        }
+    }
+    
+    
+    func parse(data: Data) -> [SearchResult] {
+        do {
+            let decode = JSONDecoder()
+            let result = try decode.decode(ResultArray.self, from: data)
+            return result.results
+        } catch {
+            print("JSON Error: \(error)")
+            return []
+        }
+    }
+    
+    
+    func showNetworkError() {
+        let alert = UIAlertController(
+            title: "Whoops...",
+            message: "There was an error accessing the iTunes Store" + "Please try again",
+            preferredStyle: .alert)
+        
+        let action = UIAlertAction(title: "OK", style: .default)
+        alert.addAction(action)
+        present(alert, animated: true)
+    }
 }
 
 //MARK: - SearchBar Delegate
@@ -49,6 +84,11 @@ extension SearchViewController: UISearchBarDelegate {
             let url = iTunesURL(searchText: searchBar.text!)
             print("URL: '\(url)'")
             
+            if let data = performStoreRequst(with: url) {
+                searchResults = parse(data: data)
+            }
+            
+            searchResults.sort(by: <)
             tableView.reloadData()
         }
     }
@@ -94,7 +134,11 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
             
             let searchResult = searchResults[indexPath.row]
             cell.nameLabel.text = searchResult.name
-            cell.artistNameLabel.text = searchResult.artistName
+            if searchResult.artist.isEmpty {
+                cell.artistNameLabel.text = "Unknown"
+            } else {
+                cell.artistNameLabel.text = String(format: "%@ (%@)", searchResult.artist, searchResult.type)
+            }
             
             return cell
         }
