@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6008A75C28D24AFE004F4B06 /* UIImageView+DownloadImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6008A75B28D24AFE004F4B06 /* UIImageView+DownloadImage.swift */; };
 		601D759D28CA7B6300DD9D91 /* LoadingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 601D759C28CA7B6300DD9D91 /* LoadingCell.xib */; };
 		606765A228C4A88C0053809C /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606765A128C4A88C0053809C /* SearchResult.swift */; };
 		606765A428C4C5C20053809C /* SearchResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 606765A328C4C5C20053809C /* SearchResultCell.xib */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6008A75B28D24AFE004F4B06 /* UIImageView+DownloadImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+DownloadImage.swift"; sourceTree = "<group>"; };
 		601D759C28CA7B6300DD9D91 /* LoadingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingCell.xib; sourceTree = "<group>"; };
 		606765A128C4A88C0053809C /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
 		606765A328C4C5C20053809C /* SearchResultCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchResultCell.xib; sourceTree = "<group>"; };
@@ -75,6 +77,7 @@
 				601D759C28CA7B6300DD9D91 /* LoadingCell.xib */,
 				606765A128C4A88C0053809C /* SearchResult.swift */,
 				606F8B7128BCBB8F009AFC0A /* Main.storyboard */,
+				6008A75B28D24AFE004F4B06 /* UIImageView+DownloadImage.swift */,
 				606F8B7728BCBB92009AFC0A /* Assets.xcassets */,
 				606F8B7C28BCBB92009AFC0A /* Info.plist */,
 				606F8B7428BCBB8F009AFC0A /* StoreSearch.xcdatamodeld */,
@@ -155,6 +158,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6008A75C28D24AFE004F4B06 /* UIImageView+DownloadImage.swift in Sources */,
 				606F8B7028BCBB8F009AFC0A /* SearchViewController.swift in Sources */,
 				606F8B6C28BCBB8F009AFC0A /* AppDelegate.swift in Sources */,
 				606765A228C4A88C0053809C /* SearchResult.swift in Sources */,
