@@ -19,6 +19,7 @@
 		606F8B7328BCBB8F009AFC0A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 606F8B7128BCBB8F009AFC0A /* Main.storyboard */; };
 		606F8B7628BCBB8F009AFC0A /* StoreSearch.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 606F8B7428BCBB8F009AFC0A /* StoreSearch.xcdatamodeld */; };
 		606F8B7828BCBB92009AFC0A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 606F8B7728BCBB92009AFC0A /* Assets.xcassets */; };
+		6074402028D3846D001F5550 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6074401F28D3846D001F5550 /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		606F8B7528BCBB8F009AFC0A /* StoreSearch.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = StoreSearch.xcdatamodel; sourceTree = "<group>"; };
 		606F8B7728BCBB92009AFC0A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		606F8B7C28BCBB92009AFC0A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6074401F28D3846D001F5550 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +73,7 @@
 				606F8B6B28BCBB8F009AFC0A /* AppDelegate.swift */,
 				606F8B6D28BCBB8F009AFC0A /* SceneDelegate.swift */,
 				606F8B6F28BCBB8F009AFC0A /* SearchViewController.swift */,
+				6074401F28D3846D001F5550 /* DetailViewController.swift */,
 				606765A328C4C5C20053809C /* SearchResultCell.xib */,
 				606765A528C4F16A0053809C /* SearchResultCell.swift */,
 				606765A928C4F7930053809C /* NothingFoundCell.xib */,
@@ -165,6 +168,7 @@
 				606F8B6E28BCBB8F009AFC0A /* SceneDelegate.swift in Sources */,
 				606765A628C4F16A0053809C /* SearchResultCell.swift in Sources */,
 				606F8B7628BCBB8F009AFC0A /* StoreSearch.xcdatamodeld in Sources */,
+				6074402028D3846D001F5550 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

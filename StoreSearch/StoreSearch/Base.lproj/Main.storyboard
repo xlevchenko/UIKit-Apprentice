@@ -73,14 +73,65 @@
                         <outlet property="searchBar" destination="6mU-ef-d6I" id="YmR-as-Iwn"/>
                         <outlet property="segmentedControl" destination="N6P-cK-58Q" id="JFq-iM-UhP"/>
                         <outlet property="tableView" destination="TBU-bX-Sl1" id="F36-qy-m7O"/>
+                        <segue destination="Od3-kH-1N6" kind="presentation" identifier="ShowDetail" id="aLz-9z-KPi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="28" y="94"/>
         </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="rc0-EM-8nV">
+            <objects>
+                <viewController id="Od3-kH-1N6" customClass="DetailViewController" customModule="StoreSearch" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="QIz-Zd-pR1">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yef-CY-vPU" userLabel="Pop-up View">
+                                <rect key="frame" x="47.5" y="183.5" width="280" height="280"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ugd-65-VK9" userLabel="Close Button">
+                                        <rect key="frame" x="227" y="8" width="45" height="31"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="xmark.circle.fill" catalog="system">
+                                            <color key="baseForegroundColor" name="AccentColor"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="close" destination="Od3-kH-1N6" eventType="touchUpInside" id="BsZ-Ho-Wlj"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" name="DetailBG"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="ugd-65-VK9" secondAttribute="trailing" constant="8" id="FQd-mT-LlB"/>
+                                    <constraint firstAttribute="width" constant="280" id="H1o-IV-zdD"/>
+                                    <constraint firstAttribute="height" constant="280" id="QP2-qr-zNw"/>
+                                    <constraint firstItem="ugd-65-VK9" firstAttribute="top" secondItem="yef-CY-vPU" secondAttribute="top" constant="8" id="kup-kD-zzM"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="EIt-wh-jbR"/>
+                        <color key="backgroundColor" white="1" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="yef-CY-vPU" firstAttribute="centerY" secondItem="QIz-Zd-pR1" secondAttribute="centerY" id="39Y-In-v45"/>
+                            <constraint firstItem="yef-CY-vPU" firstAttribute="centerX" secondItem="QIz-Zd-pR1" secondAttribute="centerX" id="Cxn-4U-maa"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2hv-Gh-43r" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="806" y="93"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="xmark.circle.fill" catalog="system" width="128" height="121"/>
+        <namedColor name="AccentColor">
+            <color red="0.039215686274509803" green="0.31372549019607843" blue="0.31372549019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="DetailBG">
+            <color red="1" green="1" blue="1" alpha="0.94999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="SearchBar">
             <color red="0.70588235294117652" green="0.94117647058823528" blue="0.82352941176470584" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

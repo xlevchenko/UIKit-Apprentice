@@ -118,6 +118,11 @@ class SearchViewController: UIViewController {
     }
     
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowDetail" {
+            segue.destination.modalPresentationStyle = .overFullScreen
+        }
+    }
 }
 
 //MARK: - SearchBar Delegate
@@ -186,6 +191,8 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        performSegue(withIdentifier: "ShowDetail", sender: indexPath)
     }
     
     
