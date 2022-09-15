@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina4_7" orientation="portrait" appearance="dark"/>
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
@@ -107,19 +107,19 @@
                                                 </subviews>
                                             </stackView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="hDW-cS-0Md">
-                                                <rect key="frame" x="0.0" y="104.5" width="248" height="24"/>
+                                                <rect key="frame" x="0.0" y="107.5" width="248" height="24"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QrC-HJ-geO">
-                                                <rect key="frame" x="0.0" y="133.5" width="248" height="20.5"/>
+                                                <rect key="frame" x="0.0" y="139.5" width="248" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="qdV-Ox-gjm" userLabel=" Grid">
-                                                <rect key="frame" x="0.0" y="158.5" width="248" height="49"/>
+                                                <rect key="frame" x="0.0" y="167.5" width="248" height="49"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Ben-R0-hI9">
                                                         <rect key="frame" x="0.0" y="0.0" width="51" height="49"/>
@@ -158,18 +158,22 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="MIy-Rv-RWD">
-                                                <rect key="frame" x="0.0" y="212" width="248" height="36"/>
+                                                <rect key="frame" x="0.0" y="224" width="248" height="24"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="0Fh-3Q-hxn">
-                                                        <rect key="frame" x="0.0" y="0.0" width="248" height="36"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="248" height="24"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mUI-Nr-gMk">
-                                                                <rect key="frame" x="191" y="0.0" width="57" height="36"/>
+                                                                <rect key="frame" x="171" y="0.0" width="77" height="24"/>
                                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                                <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
                                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                                <state key="normal" title="$9.99">
+                                                                <state key="normal" title="$9.99" backgroundImage="PriceButton">
                                                                     <color key="titleColor" name="AccentColor"/>
                                                                 </state>
+                                                                <connections>
+                                                                    <action selector="openInStore" destination="Od3-kH-1N6" eventType="touchUpInside" id="5rK-bc-4gp"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                     </stackView>
@@ -208,6 +212,15 @@
                             <constraint firstItem="yef-CY-vPU" firstAttribute="centerX" secondItem="QIz-Zd-pR1" secondAttribute="centerX" id="Cxn-4U-maa"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="artistNameLabel" destination="QrC-HJ-geO" id="Oox-KA-GBS"/>
+                        <outlet property="artworkImageView" destination="XYr-lf-b6w" id="7NS-6H-e9B"/>
+                        <outlet property="genrelLabel" destination="ntS-vp-hXk" id="l31-VQ-wyk"/>
+                        <outlet property="kindLabel" destination="zFl-Uy-Lmw" id="7Rs-YJ-Uvd"/>
+                        <outlet property="nameLabel" destination="hDW-cS-0Md" id="4Hx-pB-fss"/>
+                        <outlet property="popupView" destination="yef-CY-vPU" id="ppo-Jt-ftf"/>
+                        <outlet property="priceButton" destination="mUI-Nr-gMk" id="wWQ-Fj-UGK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2hv-Gh-43r" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -215,6 +228,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="PriceButton" width="11" height="24"/>
         <image name="xmark.circle.fill" catalog="system" width="128" height="121"/>
         <namedColor name="AccentColor">
             <color red="0.039215686274509803" green="0.31372549019607843" blue="0.31372549019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
