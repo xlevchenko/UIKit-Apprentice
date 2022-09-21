@@ -16,6 +16,8 @@ class LandscapeViewController: UIViewController {
     
     private var firstTime = true
     
+    private var downloads = [URLSessionDownloadTask]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         //Remove constraints from main view
@@ -29,10 +31,10 @@ class LandscapeViewController: UIViewController {
         // Remove constraints for scroll view
         scrollView.removeConstraints(pageControl.constraints)
         scrollView.translatesAutoresizingMaskIntoConstraints = true
-        
-        scrollView.backgroundColor = .systemYellow
-        
+                
         view.backgroundColor = UIColor(patternImage: UIImage(named: "LandscapeBackground")!)
+        
+        pageControl.numberOfPages = 0
     }
     
     override func viewWillLayoutSubviews() {
@@ -74,10 +76,10 @@ class LandscapeViewController: UIViewController {
         var row = 0
         var colum = 0
         var x = marginX
-        for (index, result) in searchResults.enumerated() {
-            let button = UIButton(type: .system)
-            button.backgroundColor = .white
-            button.setTitle("\(index)", for: .normal)
+        for (_, result) in searchResults.enumerated() {
+            let button = UIButton(type: .custom)
+            downloadImage(for: result, andPlaceOn: button)
+            button.setBackgroundImage(UIImage(named: "LandscapeButton"), for: .normal)
             
             button.frame = CGRect(x: x + paddingHorz, y: marginY + CGFloat(row) * itemHeight + paddingVert, width: buttonWidth, height: buttonHeight)
             
@@ -97,5 +99,47 @@ class LandscapeViewController: UIViewController {
         let buttonsPerPage = columnsPerPage * rowsPerPage
         let numPeges = 1 + (searchResults.count - 1) / buttonsPerPage
         scrollView.contentSize = CGSize(width: CGFloat(numPeges) * viewWidth, height: scrollView.bounds.size.height)
+        
+        pageControl.numberOfPages = numPeges
+        pageControl.currentPage = 0
+    }
+    
+    
+    
+    @IBAction func pageChanded(_ sender: UIPageControl) {
+        UIView.animate(withDuration: 0.3, delay: 0, options: [.curveEaseInOut]) {
+            self.scrollView.contentOffset = CGPoint(x: self.scrollView.bounds.size.width * CGFloat(sender.currentPage), y: 0)
+        }
+    }
+    
+    
+    private func downloadImage(for searchResult: SearchResult, andPlaceOn button: UIButton) {
+        if let url = URL(string: searchResult.imageSmall) {
+            let task = URLSession.shared.downloadTask(with: url) { url, _, error in
+                if error == nil, let url = url, let data = try? Data(contentsOf: url), let image = UIImage(data: data) {
+                    DispatchQueue.main.async {
+                        button.setImage(image, for: .normal)
+                    }
+                }
+            }
+            downloads.append(task)
+            task.resume()
+        }
+    }
+    
+    deinit {
+        for task in downloads {
+            task.cancel()
+        }
+    }
+}
+
+
+
+extension LandscapeViewController: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let width = scrollView.bounds.size.width
+        let page = Int((scrollView.contentOffset.x + width / 2) / width)
+        pageControl.currentPage = page
     }
 }
