@@ -47,13 +47,15 @@ class LandscapeViewController: UIViewController {
             firstTime = false
             
             switch search.state {
-            case .notSearchedYet, .loading, .noResult:
+            case .notSearchedYet:
                 break
+            case .noResult:
+                showNothingFoundLabel()
+            case .loading:
+                showSpinner()
             case .result(let list):
                 tileButton(list)
             }
-            
-            
         }
     }
    
@@ -84,13 +86,14 @@ class LandscapeViewController: UIViewController {
         var row = 0
         var colum = 0
         var x = marginX
-        for (_, result) in searchResults.enumerated() {
+        for (index, result) in searchResults.enumerated() {
             let button = UIButton(type: .custom)
             downloadImage(for: result, andPlaceOn: button)
             button.setBackgroundImage(UIImage(named: "LandscapeButton"), for: .normal)
             
             button.frame = CGRect(x: x + paddingHorz, y: marginY + CGFloat(row) * itemHeight + paddingVert, width: buttonWidth, height: buttonHeight)
-            
+            button.tag = 2000 + index
+            button.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
             scrollView.addSubview(button)
             
             row += 1
@@ -134,6 +137,69 @@ class LandscapeViewController: UIViewController {
             task.resume()
         }
     }
+    
+    
+    private func showSpinner() {
+        let spinner = UIActivityIndicatorView(style: .large)
+        spinner.center = CGPoint(x: scrollView.bounds.midX + 0.5, y: scrollView.bounds.midY + 0.5)
+        spinner.tag = 1000
+        view.addSubview(spinner)
+        spinner.startAnimating()
+    }
+    
+    
+    func searchResultReceived() {
+        hideSpiner()
+        
+        switch search.state {
+        case .notSearchedYet, .loading:
+            break
+        case .noResult:
+            showNothingFoundLabel()
+        case .result(let list):
+            tileButton(list)
+        }
+    }
+    
+    
+    private func hideSpiner() {
+        view.viewWithTag(1000)?.removeFromSuperview()
+    }
+    
+    
+    private func showNothingFoundLabel() {
+        let label = UILabel(frame: CGRect.zero)
+        label.text = "Nothing Found"
+        label.textColor = UIColor.label
+        label.backgroundColor = .clear
+        
+        label.sizeToFit()
+        
+        var rect = label.frame
+        rect.size.width = ceil(rect.size.width / 2) * 2
+        rect.size.height = ceil(rect.size.height / 2) * 2
+        label.frame = rect
+        
+        label.center = CGPoint(x: scrollView.bounds.midX, y: scrollView.bounds.midY)
+        view.addSubview(label)
+    }
+    
+    
+    @objc private func buttonPressed(_ sender: UIButton) {
+        performSegue(withIdentifier: "ShowDetail", sender: sender)
+    }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowDetail" {
+            if case .result(let list) = search.state {
+                let detailViewController = segue.destination as! DetailViewController
+                let searchResult = list[(sender as! UIButton).tag - 2000]
+                detailViewController.searchResult = searchResult
+            }
+        }
+    }
+    
     
     deinit {
         for task in downloads {
