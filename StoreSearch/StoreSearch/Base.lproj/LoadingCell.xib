@@ -36,7 +36,7 @@
                     <constraint firstItem="FxO-gX-nlQ" firstAttribute="centerX" secondItem="Ufx-cn-2hc" secondAttribute="centerX" id="bea-86-PNN"/>
                 </constraints>
             </tableViewCellContentView>
-            <point key="canvasLocation" x="130" y="45"/>
+            <point key="canvasLocation" x="8" y="-6"/>
         </tableViewCell>
     </objects>
     <resources>
