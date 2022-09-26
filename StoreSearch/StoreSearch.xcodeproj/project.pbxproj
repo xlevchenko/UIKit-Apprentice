@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		6008A75C28D24AFE004F4B06 /* UIImageView+DownloadImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6008A75B28D24AFE004F4B06 /* UIImageView+DownloadImage.swift */; };
 		603EE31328DCEC3B00127970 /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 603EE31228DCEC3B00127970 /* Search.swift */; };
+		60600C6028E22F4300E9F41D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 60600C6228E22F4300E9F41D /* Localizable.strings */; };
+		60600C6628E241DA00E9F41D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 60600C6828E241DA00E9F41D /* InfoPlist.strings */; };
 		606765A228C4A88C0053809C /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606765A128C4A88C0053809C /* SearchResult.swift */; };
 		606765A428C4C5C20053809C /* SearchResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 606765A328C4C5C20053809C /* SearchResultCell.xib */; };
 		606765A628C4F16A0053809C /* SearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606765A528C4F16A0053809C /* SearchResultCell.swift */; };
@@ -31,6 +33,10 @@
 /* Begin PBXFileReference section */
 		6008A75B28D24AFE004F4B06 /* UIImageView+DownloadImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+DownloadImage.swift"; sourceTree = "<group>"; };
 		603EE31228DCEC3B00127970 /* Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
+		60600C6128E22F4300E9F41D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		60600C6328E230A200E9F41D /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Localizable.strings; sourceTree = "<group>"; };
+		60600C6728E241DA00E9F41D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		60600C6928E241E600E9F41D /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		606765A128C4A88C0053809C /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
 		606765A328C4C5C20053809C /* SearchResultCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchResultCell.xib; sourceTree = "<group>"; };
 		606765A528C4F16A0053809C /* SearchResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultCell.swift; sourceTree = "<group>"; };
@@ -105,6 +111,8 @@
 				606F8B7728BCBB92009AFC0A /* Assets.xcassets */,
 				606F8B7C28BCBB92009AFC0A /* Info.plist */,
 				606F8B7428BCBB8F009AFC0A /* StoreSearch.xcdatamodeld */,
+				60600C6228E22F4300E9F41D /* Localizable.strings */,
+				60600C6828E241DA00E9F41D /* InfoPlist.strings */,
 			);
 			path = StoreSearch;
 			sourceTree = "<group>";
@@ -169,6 +177,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				606F8B7828BCBB92009AFC0A /* Assets.xcassets in Resources */,
+				60600C6628E241DA00E9F41D /* InfoPlist.strings in Resources */,
+				60600C6028E22F4300E9F41D /* Localizable.strings in Resources */,
 				60E095F828E0BE1C00A7593A /* LoadingCell.xib in Resources */,
 				606765A428C4C5C20053809C /* SearchResultCell.xib in Resources */,
 				60E095F428E0B0EE00A7593A /* NothingFoundCell.xib in Resources */,
@@ -203,6 +213,24 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		60600C6228E22F4300E9F41D /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				60600C6128E22F4300E9F41D /* en */,
+				60600C6328E230A200E9F41D /* nl */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		60600C6828E241DA00E9F41D /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				60600C6728E241DA00E9F41D /* en */,
+				60600C6928E241E600E9F41D /* nl */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 		606F8B7128BCBB8F009AFC0A /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
