@@ -21,13 +21,14 @@ class DetailViewController: UIViewController {
     
     var downloadTask: URLSessionDownloadTask?
     
-    
     enum AnimationStyle {
         case slide
         case fade
     }
     
     var dismissStyle = AnimationStyle.fade
+    
+    var isPopUp = false
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
@@ -36,22 +37,28 @@ class DetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        popupView.layer.cornerRadius = 10
-        
-        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(close))
-        gestureRecognizer.cancelsTouchesInView = false
-        gestureRecognizer.delegate = self
-        view.addGestureRecognizer(gestureRecognizer)
+        if isPopUp {
+            popupView.layer.cornerRadius = 10
+            
+            let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(close))
+            gestureRecognizer.cancelsTouchesInView = false
+            gestureRecognizer.delegate = self
+            view.addGestureRecognizer(gestureRecognizer)
+            
+            view.backgroundColor = .clear
+            let dimmingView = GradientView(frame: CGRect.zero)
+            dimmingView.frame = view.bounds
+            view.insertSubview(dimmingView, at: 0)
+        } else {
+            view.backgroundColor = UIColor(patternImage: UIImage(named: "LandscapeBackground")!)
+            popupView.isHidden = true
+        }
         
         if searchResult != nil {
             updateUI()
         }
-        
-        view.backgroundColor = .clear
-        let dimmingView = GradientView(frame: CGRect.zero)
-        dimmingView.frame = view.bounds
-        view.insertSubview(dimmingView, at: 0)
     }
+    
     
     @IBAction func close() {
         dismissStyle = .slide
@@ -99,11 +106,11 @@ class DetailViewController: UIViewController {
         }
     }
     
+    
     deinit {
         print("deinit \(self)")
         downloadTask?.cancel()
     }
-    
 }
 
 
@@ -111,7 +118,6 @@ extension DetailViewController: UIGestureRecognizerDelegate {
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
         return (touch.view === self.view)
     }
-    
 }
 
 
@@ -119,6 +125,7 @@ extension DetailViewController: UIViewControllerTransitioningDelegate {
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return BounceAnimationController()
     }
+    
     
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         switch dismissStyle {

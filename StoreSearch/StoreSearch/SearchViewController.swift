@@ -29,6 +29,8 @@ class SearchViewController: UIViewController {
         tableView.register(cellNib, forCellReuseIdentifier: TableView.CellIdentifiers.loadingCell)
         
         searchBar.resignFirstResponder()
+        
+        title = NSLocalizedString("Search", comment: "split view primary button")
     }
     
     
