@@ -17,7 +17,13 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var genrelLabel: UILabel!
     @IBOutlet weak var priceButton: UIButton!
     
-    var searchResult: SearchResult!
+    var searchResult: SearchResult! {
+        didSet {
+            if isViewLoaded {
+                updateUI()
+            }
+        }
+    }
     
     var downloadTask: URLSessionDownloadTask?
     
@@ -97,6 +103,7 @@ class DetailViewController: UIViewController {
         }
         
         priceButton.setTitle(priceText, for: .normal)
+        popupView.isHidden = false
     }
     
     

@@ -17,6 +17,8 @@ class SearchViewController: UIViewController {
     
     var landscapeVC: LandscapeViewController?
     
+    weak var splitViewDetail: DetailViewController?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         var cellNib = UINib(nibName: TableView.CellIdentifiers.searchResultCell, bundle: nil)
@@ -31,6 +33,10 @@ class SearchViewController: UIViewController {
         searchBar.resignFirstResponder()
         
         title = NSLocalizedString("Search", comment: "split view primary button")
+        
+        if UIDevice.current.userInterfaceIdiom != .pad {
+            searchBar.becomeFirstResponder()
+        }
     }
     
     
@@ -136,6 +142,15 @@ class SearchViewController: UIViewController {
             }
         }
     }
+    
+    
+    private func hidePrimaryPane() {
+        UIView.animate(withDuration: 0.25) {
+            self.splitViewController!.preferredDisplayMode = .secondaryOnly
+        } completion: { _ in
+            self.splitViewController!.preferredDisplayMode = .automatic
+        }
+    }
 }
 
 
@@ -203,8 +218,21 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        searchBar.resignFirstResponder()
         
-        performSegue(withIdentifier: "ShowDetail", sender: indexPath)
+        if view.window!.rootViewController!.traitCollection.horizontalSizeClass == .compact {
+            tableView.deselectRow(at: indexPath, animated: true)
+            performSegue(withIdentifier: "ShowDetail", sender: indexPath)
+            
+        } else {
+            if case .result(let list) = search.state {
+                splitViewDetail?.searchResult = list[indexPath.row]
+            }
+        }
+        
+        if splitViewController!.displayMode != .oneBesideSecondary {
+            hidePrimaryPane()
+        }
     }
     
     
