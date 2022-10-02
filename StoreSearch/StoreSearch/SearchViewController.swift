@@ -53,6 +53,13 @@ class SearchViewController: UIViewController {
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if UIDevice.current.userInterfaceIdiom == .phone {
+            navigationController?.navigationBar.isHidden = true
+        }
+    }
+    
     func showLandscape(with coordinator: UIViewControllerTransitionCoordinator) {
         guard landscapeVC == nil else { return }
         
@@ -139,6 +146,7 @@ class SearchViewController: UIViewController {
                 let indexPath = sender as! IndexPath
                 let searchResult = list[indexPath.row]
                 detailViewController.searchResult = searchResult
+                detailViewController.isPopUp = true
             }
         }
     }
