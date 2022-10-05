@@ -270,10 +270,10 @@
             </objects>
             <point key="canvasLocation" x="28" y="858"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Menu View Controller-->
         <scene sceneID="Hcj-Qy-Ski">
             <objects>
-                <tableViewController storyboardIdentifier="PopoverView" id="xxe-Ff-cA6" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="PopoverView" id="xxe-Ff-cA6" customClass="MenuViewController" customModule="StoreSearch" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="TQf-Bs-oZI">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -340,6 +340,7 @@
                             <outlet property="delegate" destination="xxe-Ff-cA6" id="0de-Um-zrs"/>
                         </connections>
                     </tableView>
+                    <value key="contentSizeForViewInPopover" type="size" width="320" height="204"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pv6-W6-FdA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

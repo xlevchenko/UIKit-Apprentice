@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import MessageUI
 
 class DetailViewController: UIViewController {
     
@@ -58,6 +59,8 @@ class DetailViewController: UIViewController {
         } else {
             view.backgroundColor = UIColor(patternImage: UIImage(named: "LandscapeBackground")!)
             popupView.isHidden = true
+            
+            navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(showPopover(_:)))
         }
         
         if searchResult != nil {
@@ -114,6 +117,17 @@ class DetailViewController: UIViewController {
     }
     
     
+    @objc func showPopover(_ sender: UIBarButtonItem) {
+        guard let popover = storyboard?.instantiateViewController(withIdentifier: "PopoverView") as? MenuViewController else { return }
+        popover.modalPresentationStyle = .popover
+        if let ppc = popover.popoverPresentationController {
+            ppc.barButtonItem = sender
+        }
+        popover.delegate = self
+        present(popover, animated: true)
+    }
+    
+    
     deinit {
         print("deinit \(self)")
         downloadTask?.cancel()
@@ -140,6 +154,20 @@ extension DetailViewController: UIViewControllerTransitioningDelegate {
             return SlideOutAnimationController()
         case .fade:
             return FadeOutAnimationController()
+        }
+    }
+}
+
+
+extension DetailViewController: MenuViewControllerDelegate {
+    func menuViewControllerSendEmail(_ controller: MenuViewController) {
+        dismiss(animated: true) {
+            if MFMailComposeViewController.canSendMail() {
+                let controller = MFMailComposeViewController()
+                controller.setSubject(NSLocalizedString("Support Request", comment: "Email subject"))
+                controller.setToRecipients(["second.levchenko@gmail.com"])
+                self.present(controller, animated: true)
+            }
         }
     }
 }
