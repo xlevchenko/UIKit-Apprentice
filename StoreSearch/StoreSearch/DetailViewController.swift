@@ -164,10 +164,18 @@ extension DetailViewController: MenuViewControllerDelegate {
         dismiss(animated: true) {
             if MFMailComposeViewController.canSendMail() {
                 let controller = MFMailComposeViewController()
+                controller.mailComposeDelegate = self
                 controller.setSubject(NSLocalizedString("Support Request", comment: "Email subject"))
                 controller.setToRecipients(["second.levchenko@gmail.com"])
                 self.present(controller, animated: true)
             }
         }
+    }
+}
+
+
+extension DetailViewController: MFMailComposeViewControllerDelegate {
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        dismiss(animated: true)
     }
 }
